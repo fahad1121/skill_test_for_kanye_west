@@ -35,7 +35,7 @@ export default {
 
         const logout = () => {
             localStorage.removeItem('token');
-            form.get('/logout')
+            form.post('/logout',{})
         }
 
         return {
