@@ -1,0 +1,105 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Authentication APIs and Rendering Components",
+        "description": "API for user authentication and registration and UI using inertia and vue",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "summary": "Display the login form",
+                "description": "Display the login form.",
+                "operationId": "fd47bbcd63281479a8a2be714935a000",
+                "responses": {
+                    "200": {
+                        "description": "Login form displayed"
+                    }
+                }
+            }
+        },
+        "/register": {
+            "get": {
+                "summary": "Display the registration form",
+                "description": "Display the registration form.",
+                "operationId": "36669f54c3b3a0b46ce11d8ef7152433",
+                "responses": {
+                    "200": {
+                        "description": "Registration form displayed"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Register a new user",
+                "description": "Register a new user.",
+                "operationId": "0903f2e0df1a8857bee538fc055417f0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User registered successfully"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "summary": "Authenticate a user and generate a token",
+                "description": "Authenticate a user and generate a token upon successful login.",
+                "operationId": "2dd578ff7aba2721293dac66833b27d1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User authenticated successfully"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        }
+    }
+}

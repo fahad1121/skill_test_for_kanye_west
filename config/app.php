@@ -125,6 +125,8 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    'KANYE_API_URL' =>  env('KANYE_API_URL'),
+
     /*
     |--------------------------------------------------------------------------
     | Maintenance Mode Driver
