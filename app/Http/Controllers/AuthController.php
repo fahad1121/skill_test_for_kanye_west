@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Support\Facades\Session;
 
 /**
  * @OA\Info(
@@ -136,8 +137,29 @@ class AuthController extends Controller
         ]);
     }
 
-    public function getLogoutUser(Request $request){
+    /**
+     * Log out a user and clear their tokens and session data.
+     *
+     * @return RedirectResponse
+     *
+     * @OA\Post(
+     *     path="/api/logout",
+     *     summary="Log out a user and clear tokens and session data",
+     *     @OA\Response(
+     *         response=200,
+     *         description="User logged out successfully",
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Unauthorized",
+     *     ),
+     * )
+     */
+
+    public function getLogoutUser(){
         auth('sanctum')->user()->tokens()->delete();
+
+        Session::flush();
 
         return redirect()->route('login')->with('success','You are logged out!');
     }

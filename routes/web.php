@@ -27,5 +27,5 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('/save-quote-to-favourite/{stringParam}',[DashboardController::class,'saveToFavourite'])->name('saveToFavourite');
     Route::get('/favourites',[DashboardController::class,'getFavourites'])->name('favourites');
     Route::delete('/delete/favourite/{id}',[DashboardController::class,'getFavouriteDelete'])->name('favourite.delete');
-    Route::post('/logout',[AuthController::class,'getLogoutUser']);
+    Route::get('/logout',[AuthController::class,'getLogoutUser']);
 });

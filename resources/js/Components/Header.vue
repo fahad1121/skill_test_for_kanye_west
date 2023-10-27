@@ -34,8 +34,8 @@ export default {
         const form = useForm();
 
         const logout = () => {
-            localStorage.clear();
-            form.post('/logout',{})
+            localStorage.removeItem('token');
+            form.get('/logout')
         }
 
         return {

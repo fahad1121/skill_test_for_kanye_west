@@ -33,7 +33,6 @@ class DashboardController extends Controller
      */
 
     public function dashboard(){
-//        dd(Auth::user());
         $quotes = [];
 
         for($i=0;$i<5;$i++){
